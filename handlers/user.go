@@ -10,6 +10,30 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+func UserById(c *fiber.Ctx) error {
+	bearToken := c.Get("Authorization")
+
+	arr := strings.Split(bearToken, " ")
+
+	userId, err := utils.ParseJwt(arr[1])
+	if err != nil {
+		c.JSON(409)
+		return c.JSON(fiber.Map{"success": false, "message": "Invalid token"})
+	}
+
+	id, err := uuid.FromString(userId)
+	if err != nil {
+		c.JSON(500)
+		return c.JSON(fiber.Map{"message": "Internal server error", "success": "false"})
+	}
+
+	var user models.User
+
+	database.Database().Where("id = ?", id).Preload("Addresses").First(&user)
+
+	return c.JSON(user)
+}
+
 func UpdateInfo(c *fiber.Ctx) error {
 	var req map[string]string
 
@@ -42,7 +66,7 @@ func UpdateInfo(c *fiber.Ctx) error {
 	}
 
 	user.SetPassword(req["password"])
-	
+
 	database.Database().Model(&user).Updates(user)
 
 	return c.JSON(fiber.Map{
