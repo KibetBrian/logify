@@ -49,7 +49,7 @@ func ConnectDb() (*gorm.DB, error) {
 
 	db, err := gorm.Open(postgres.Open(psqlInfo), &gorm.Config{})
 	if err != nil {
-		log.Fatalf("Database connection error: %v", err)
+		return nil, fmt.Errorf("database connection failed: %v", err)
 	}
 
 	//Auto migrations
