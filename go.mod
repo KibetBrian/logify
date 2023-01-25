@@ -1,4 +1,4 @@
-module shoppy
+module logify
 
 go 1.19
 

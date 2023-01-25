@@ -2,7 +2,7 @@ package database
 
 import (
 	"log"
-	"shoppy/configs"
+	"logify/configs"
 
 	"gorm.io/gorm"
 )

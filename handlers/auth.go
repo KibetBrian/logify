@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"shoppy/database"
-	"shoppy/models"
-	"shoppy/utils"
+	"logify/database"
+	"logify/models"
+	"logify/utils"
 	"time"
 
 	"github.com/gofiber/fiber/v2"

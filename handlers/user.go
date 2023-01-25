@@ -1,10 +1,10 @@
 package handlers
 
 import (
-	"shoppy/database"
-	"shoppy/middlewares"
-	"shoppy/models"
-	"shoppy/utils"
+	"logify/database"
+	"logify/middlewares"
+	"logify/models"
+	"logify/utils"
 	"strconv"
 	"strings"
 

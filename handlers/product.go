@@ -1,11 +1,9 @@
 package handlers
 
 import (
-	"strconv"
-
-	"shoppy/database"
-	"shoppy/models"
-	"shoppy/utils"
+	"logify/database"
+	"logify/models"
+	"logify/utils"
 
 	"github.com/gofiber/fiber/v2"
 	uuid "github.com/satori/go.uuid"
@@ -31,7 +29,7 @@ func GetLatestProducts(c *fiber.Ctx) error {
 func GetBrandProducts(c *fiber.Ctx) error {
 	var products []models.Product
 
-	brandId, _ := strconv.Atoi(c.Query("brandId"))
+	brandId, _ := uuid.FromString(c.Query("brandId"))
 
 	database.Database().Where("brand_id = ?", brandId).Find(&products)
 
@@ -41,7 +39,7 @@ func GetBrandProducts(c *fiber.Ctx) error {
 func GetCategoryProducts(c *fiber.Ctx) error {
 	var products []models.Product
 
-	categoryId, _ := strconv.Atoi(c.Query("categoryId"))
+	categoryId, _ := uuid.FromString(c.Query("categoryId"))
 
 	database.Database().Where("category_id = ?", categoryId).Find(&products)
 

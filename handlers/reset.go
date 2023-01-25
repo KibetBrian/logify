@@ -6,9 +6,9 @@ import (
 	"html/template"
 	"net/smtp"
 	"os"
-	"shoppy/database"
-	"shoppy/models"
-	"shoppy/utils"
+	"logify/database"
+	"logify/models"
+	"logify/utils"
 
 	"github.com/gofiber/fiber/v2"
 )

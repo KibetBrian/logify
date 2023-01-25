@@ -2,7 +2,7 @@ package utils
 
 import (
 	"github.com/gofiber/fiber"
-	"shoppy/models"
+	"logify/models"
 	"gorm.io/gorm"
 )
 

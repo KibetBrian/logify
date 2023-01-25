@@ -4,9 +4,9 @@ import (
 	"errors"
 	"strings"
 
-	"shoppy/database"
-	"shoppy/models"
-	"shoppy/utils"
+	"logify/database"
+	"logify/models"
+	"logify/utils"
 
 	"github.com/gofiber/fiber/v2"
 	uuid "github.com/satori/go.uuid"
