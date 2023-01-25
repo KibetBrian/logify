@@ -2,13 +2,25 @@ package handlers
 
 import (
 	"shoppy/database"
+	"shoppy/middlewares"
 	"shoppy/models"
 	"shoppy/utils"
+	"strconv"
 	"strings"
 
 	"github.com/gofiber/fiber/v2"
 	uuid "github.com/satori/go.uuid"
 )
+
+func AllUsers(c *fiber.Ctx) error {
+	if err := middlewares.IsAuthorized(c, "users"); err != nil {
+		return err
+	}
+
+	page, _ := strconv.Atoi(c.Query("page", "1"))
+
+	return c.JSON(models.Paginate(database.Database(), &models.User{}, page))
+}
 
 func UserById(c *fiber.Ctx) error {
 	bearToken := c.Get("Authorization")
@@ -73,3 +85,4 @@ func UpdateInfo(c *fiber.Ctx) error {
 		"message": "user updated successfully",
 	})
 }
+
