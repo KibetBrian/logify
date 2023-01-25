@@ -3,14 +3,15 @@ package models
 import (
 	"time"
 
+	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
 )
 
 type Product struct {
-	Id            uint   `json:"id" `
-	UserID        uint   `json:"user_id"`
-	BrandID       uint   `json:"brand_id"`
-	CategoryID    uint   `json:"category_id"`
+	Id            uuid.UUID   `json:"id" `
+	UserID        uuid.UUID   `json:"user_id"`
+	BrandID       uuid.UUID   `json:"brand_id"`
+	CategoryID    uuid.UUID   `json:"category_id"`
 	Name          string `json:"name"`
 	Thumbnail     string `json:"thumbnail"`
 	Details       string `json:"details"`
