@@ -11,7 +11,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func Register(c fiber.Ctx) error {
+func Register(c *fiber.Ctx) error {
 	var req map[string]string
 
 	if err := c.BodyParser(&req); err != nil {
