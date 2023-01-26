@@ -3,12 +3,14 @@ package configs
 import (
 	"fmt"
 	"log"
+	"os"
+
+	"logify/models"
 
 	_ "github.com/lib/pq"
 	"github.com/spf13/viper"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"logify/models"
 )
 
 type Configurations struct {
@@ -22,10 +24,12 @@ type Configurations struct {
 var configurations Configurations
 
 func init() {
+	wd, _ := os.Getwd()
 
-	viper.SetConfigName("config")
-	viper.AddConfigPath("../")
+	viper.SetConfigFile(wd + "/.env")
+
 	viper.AutomaticEnv()
+
 	viper.SetEnvPrefix("spruce")
 
 	err := viper.ReadInConfig()
